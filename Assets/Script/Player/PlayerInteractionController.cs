@@ -64,6 +64,14 @@ public class PlayerInteractionController : MonoBehaviour
         }
     }
 
+    public void takeDamage(int dmg){
+        health =- dmg;
+    }
+
+    public int getHealth(){
+        return health;
+    }
+
     IEnumerator WaitForSwapBack() {
         yield return new WaitForSeconds(waitTime);
         crosshairContainer.sprite = crosshairDefault;

@@ -38913,6 +38913,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237145575}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1241194091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4791134940436322315, guid: b0b3fe8c5dc49af459700bb7d14a610d, type: 3}
+  m_PrefabInstance: {fileID: 1336343319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb3bcba0b8391c4bb8e32db6a50a4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1245059527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40268,6 +40279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cae73b66d41be644ab70ca937e2bdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1241194091}
+  input: 
+  onTrigger: 0
 --- !u!135 &1271524899
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -67716,7 +67730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3537388521440551931}
   m_LocalRotation: {x: -0, y: 0.91198367, z: -0, w: 0.4102266}
-  m_LocalPosition: {x: 12.26, y: 0, z: 7.43}
+  m_LocalPosition: {x: -28.1, y: 0, z: -40.2}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 43918864}

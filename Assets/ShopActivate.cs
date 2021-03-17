@@ -5,17 +5,28 @@ using UnityEngine.UI;
 
 public class ShopActivate : MonoBehaviour
 {
-
+    public PlayerInteractionController player;
     public string input;
     public bool onTrigger;
     private bool canInteract = false;
     private bool showGUI = false;
     private bool keypadScreen = false;
+    private bool NoMoneyCheck = false;
+    private bool NoHealCheck = false;
+
+
     private void Update()
     {
         if(canInteract && Input.GetKeyDown(KeyCode.E)){
             showGUI = true;
         }
+        if (NoMoneyCheck){
+            StartCoroutine("SetNoMoneyCheckToFalse");
+        }
+        if (NoHealCheck){
+            StartCoroutine("SetNoHealCheckToFalse");
+        }
+        
     }
 
     private void OnGUI()
@@ -37,50 +48,34 @@ public class ShopActivate : MonoBehaviour
                 GUI.Box(new Rect(0, 0, 320, 450), "");
                 GUI.Box(new Rect(5, 5, 310, 25), input);
 
-                if (GUI.Button(new Rect(5, 35, 100, 100), "1"))
+                if (GUI.Button(new Rect(5, 35, 100, 100), "Heal \n 10 Clips"))
                 {
-                    input += "1";
+                    if (PlayerPrefs.GetInt("numOfPaperClips") < 10){
+                        NoMoneyCheck = true;
+                    }
+                    else
+                    {
+                        if (player.getHealth()+5 >= 20){
+                            NoHealCheck = true;
+                        }
+                        else
+                        {
+                            PlayerPrefs.SetInt("numOfPaperClips", PlayerPrefs.GetInt("numOfPaperClips") - 10);
+                            player.takeDamage(-5);
+                        }
+                    }
                 }
-                if (GUI.Button(new Rect(110, 35, 100, 100), "2"))
+                if (NoMoneyCheck)
                 {
-                    input += "2";
+                    GUI.Box(new Rect(100,100,150,200), "You don't have enough funds.");
+                    
                 }
-                if (GUI.Button(new Rect(215, 35, 100, 100), "3"))
+                if (NoHealCheck)
                 {
-                    input += "3";
+                    GUI.Box(new Rect(100,100,500,500), "You dont need to be healed.");
                 }
-                if (GUI.Button(new Rect(5, 140, 100, 100), "4"))
-                {
-                    input += "4";
-                }
-                if (GUI.Button(new Rect(110, 140, 100, 100), "5"))
-                {
-                    input += "5";
-                }
-                if (GUI.Button(new Rect(215, 140, 100, 100), "6"))
-                {
-                    input += "6";
-                }
-                if (GUI.Button(new Rect(5, 245, 100, 100), "7"))
-                {
-                    input += "7";
-                }
-                if (GUI.Button(new Rect(110, 245, 100, 100), "8"))
-                {
-                    input += "8";
-                }
-                if (GUI.Button(new Rect(215, 245, 100, 100), "9"))
-                {
-                    input += "9";
-                }
-                if (GUI.Button(new Rect(110, 350, 100, 100), "0"))
-                {
-                    input += "0";
                 }
             }
-
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -94,5 +89,23 @@ public class ShopActivate : MonoBehaviour
             canInteract = false;
             showGUI = false;
         }
+    }
+
+    private IEnumerator SetNoMoneyCheckToFalse(){
+        yield return new WaitForSeconds(1.5f);
+        if (NoMoneyCheck)
+        {
+            NoMoneyCheck = false;
+        }
+        yield return null;
+    }
+
+    private IEnumerator SetNoHealCheckToFalse(){
+        yield return new WaitForSeconds(1.5f);
+        if (NoHealCheck)
+        {
+            NoHealCheck = false;
+        }
+        yield return null;
     }
 }
