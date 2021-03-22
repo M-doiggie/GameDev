@@ -149,7 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 16090189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26546033b5167814e947852c4e4ec934, type: 3}
+  m_Script: {fileID: 11500000, guid: 1058fe50b4625ab40a218f2a7a597723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList: {fileID: 1248556945}
@@ -4107,7 +4107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1805630136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d96d266acfa37749bcf69ff2e7fcb2b, type: 3}
+  m_Script: {fileID: 11500000, guid: d7198b6e738f74c49b6b1b86b3733bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList: {fileID: 1248556945}
@@ -5134,7 +5134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2098943151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d96d266acfa37749bcf69ff2e7fcb2b, type: 3}
+  m_Script: {fileID: 11500000, guid: d7198b6e738f74c49b6b1b86b3733bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList: {fileID: 1248556945}
