@@ -2270,6 +2270,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2546187848174928795, guid: b0b3fe8c5dc49af459700bb7d14a610d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546187848174928795, guid: b0b3fe8c5dc49af459700bb7d14a610d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6959396201736380842, guid: b0b3fe8c5dc49af459700bb7d14a610d, type: 3}
       propertyPath: playerBody
       value: 

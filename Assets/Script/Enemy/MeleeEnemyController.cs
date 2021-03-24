@@ -6,11 +6,13 @@ public class MeleeEnemyController : MonoBehaviour, EnemyBase
 {
     private int hp;
     private bool isAlive;
+    private GameObject player;
 
 
     private void Awake()
     {
         hp = 10;
+        player = GameObject.Find("Player");
     }
 
     public void OnInteraction()
@@ -21,7 +23,8 @@ public class MeleeEnemyController : MonoBehaviour, EnemyBase
 
     private void GetHurt() 
     {
-        hp -= 2;
+        
+        hp -= player.GetComponent<PlayerInteractionController>().getDamageOutput();
         if (hp <= 0)
         {
             isAlive = false;

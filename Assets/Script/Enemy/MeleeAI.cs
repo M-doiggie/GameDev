@@ -13,7 +13,7 @@ public class MeleeAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    private float attackCooldown;
+    public float attackCooldown;
     private float timeBetweenAttacks;
     bool alreadyAttacked;
 
@@ -54,14 +54,14 @@ public class MeleeAI : MonoBehaviour
         {
             //Add Attacking Feature here
             player.gameObject.GetComponent<PlayerInteractionController>().takeDamage(damage);
-            animator.SetBool("canPunch", false);
+            animator.Play("Mutant Punch");
             alreadyAttacked = true;
             attackCooldown = timeBetweenAttacks;
         }
         else {
             attackCooldown -= 1;
             if (attackCooldown <= 0) {
-                //animator.SetBool("canPunch", true);
+                animator.SetBool("canPunch", false);
                 alreadyAttacked = false;
             }
         }

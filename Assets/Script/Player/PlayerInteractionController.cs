@@ -16,15 +16,20 @@ public class PlayerInteractionController : MonoBehaviour
 
     private float waitTime;
     private bool alreadyFired;
+    private bool ShowEndGUIControl;
+
+    private int damageOutput;
 
     private AudioSource gunShot;
     private void Awake()
     {
+        ShowEndGUIControl = false;
         PlayerPrefs.SetInt("numOfPaperClips",0);
         health = 20;
         gunShot = GetComponent<AudioSource>();
         waitTime = gunShot.clip.length - 1;
         alreadyFired = false;
+        damageOutput = 3;
     }
 
     void Update()
@@ -56,9 +61,13 @@ public class PlayerInteractionController : MonoBehaviour
                 }
             }
 
-            if (LayerMask.LayerToName(hit.transform.gameObject.layer) == "EndControl" && Input.GetKeyDown(KeyCode.E))
+            if (LayerMask.LayerToName(hit.transform.gameObject.layer) == "EndControl")
             {
-                SceneManager.LoadSceneAsync(2);
+                ShowEndGUIControl = true;
+                if(Input.GetKeyDown(KeyCode.E)){
+                    SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+                    ShowEndGUIControl = false;
+                }
             }
             
         }
@@ -77,4 +86,22 @@ public class PlayerInteractionController : MonoBehaviour
         crosshairContainer.sprite = crosshairDefault;
         alreadyFired = false;
     }
+
+    public void increaseDamageOutput(){
+        damageOutput += 2;
+    }
+
+    public int getDamageOutput(){
+        return damageOutput;
+    }
+
+private void OnGUI()
+    {
+            if (ShowEndGUIControl)
+            {
+                GUI.Box(new Rect(0, 0, 200, 25), "Press e to start next level");
+            }
+    }
+
+
 }

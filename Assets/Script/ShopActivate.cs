@@ -65,6 +65,18 @@ public class ShopActivate : MonoBehaviour
                         }
                     }
                 }
+                if(GUI.Button(new Rect(5, 170, 100, 100), "Gun Upgrade \n 20 Clips")){
+                    if (PlayerPrefs.GetInt("numOfPaperClips") < 20){
+                        NoMoneyCheck = true;
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("numOfPaperClips", PlayerPrefs.GetInt("numOfPaperClips") - 20);
+                            player.increaseDamageOutput();
+                    }
+
+                }
+
                 if (NoMoneyCheck)
                 {
                     GUI.Box(new Rect(100,100,150,200), "You don't have enough funds.");
