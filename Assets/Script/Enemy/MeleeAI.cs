@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,7 +29,7 @@ public class MeleeAI : MonoBehaviour
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         health = 100;
-        damage = 4;
+        damage = 3;
         attackRange = 3;
         sightRange = 20;
         timeBetweenAttacks = 60;
@@ -56,15 +57,15 @@ public class MeleeAI : MonoBehaviour
             player.gameObject.GetComponent<PlayerInteractionController>().takeDamage(damage);
             animator.Play("Mutant Punch");
             alreadyAttacked = true;
-            attackCooldown = timeBetweenAttacks;
+            StartCoroutine(waitForAttack());
         }
-        else {
-            attackCooldown -= 1;
-            if (attackCooldown <= 0) {
-                animator.SetBool("canPunch", false);
-                alreadyAttacked = false;
-            }
-        }
+    }
+
+    IEnumerator waitForAttack()
+    {
+        yield return new WaitForSeconds(4);
+        alreadyAttacked = false;
+        animator.SetBool("canPunch", false);
     }
 
     private void chase()

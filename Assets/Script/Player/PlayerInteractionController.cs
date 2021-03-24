@@ -74,7 +74,7 @@ public class PlayerInteractionController : MonoBehaviour
     }
 
     public void takeDamage(int dmg){
-        health =- dmg;
+        health = health - dmg;
     }
 
     public int getHealth(){

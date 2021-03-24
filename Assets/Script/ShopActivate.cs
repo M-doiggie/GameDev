@@ -100,6 +100,7 @@ public class ShopActivate : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             canInteract = false;
             showGUI = false;
+            keypadScreen = false;
         }
     }
 
